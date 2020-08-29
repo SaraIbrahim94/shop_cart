@@ -30,7 +30,7 @@ if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
         $base_url = 'http://';
 }
 $base_url .= $_SERVER['HTTP_HOST']."/template";
-$config['base_url'] = $base_url;
+$config['base_url'] = 'https://saraibrahim94.github.io/template/';
 /*
 |--------------------------------------------------------------------------
 | Index File
