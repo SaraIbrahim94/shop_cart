@@ -20,7 +20,7 @@
                             <p class="text-h3">Happiness is Shopping </p>
                         </div>
                     </div>
-                    <form action="<?=base_url()?>index.php/Login/do_login" method="post">
+                    <form action="<?=base_url()?>Login/do_login" method="post">
                         <div class="row align-items-center mt-4">
                             <div class="col">
                                 <input type="email" class="form-control" name="email" placeholder="Email" >
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <br>
-                        <h5>Don't have account? <a href="<?=base_url()?>index.php/Register">Register</a></h5>
+                        <h5>Don't have account? <a href="<?=base_url()?>Register">Register</a></h5>
                         <div class="row justify-content-start mt-4">
                             <div class="col">
                                 <input type="submit" value="Submit" class="btn btn-primary mt-4">

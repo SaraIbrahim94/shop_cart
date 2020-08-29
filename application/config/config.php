@@ -29,7 +29,7 @@ if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
 } else {
         $base_url = 'http://';
 }
-$base_url .= $_SERVER['HTTP_HOST']."/template";
+$base_url .= $_SERVER['HTTP_HOST']."/shop_cart";
 $config['base_url'] = $base_url;
 /*
 |--------------------------------------------------------------------------
@@ -460,7 +460,7 @@ $config['csrf_token_name'] = 'csrf_token_name';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array();
+$config['csrf_exclude_uris'] = array('Shop_cart/quantity');
 
 /*
 |--------------------------------------------------------------------------

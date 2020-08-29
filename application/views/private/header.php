@@ -18,11 +18,11 @@
 
   <?php if(uid() != ''){?>
   <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="<?=base_url()?>index.php/Products">Products</a>
-      <a class="navbar-brand" href="<?=base_url()?>index.php/Shop_cart">Shop cart</a>
-      <a class="navbar-brand" href="<?=base_url()?>index.php/Products/add">Add product</a>
-      <a class="navbar-brand" href="<?=base_url()?>index.php/Shop_cart/deleted_products">Deleted products</a>
-      <a class="navbar-brand" href="<?=base_url()?>index.php/Login/log_out">Sign out</a>
+      <a class="navbar-brand" href="<?=base_url()?>Products">Products</a>
+      <a class="navbar-brand" href="<?=base_url()?>Shop_cart">Shop cart</a>
+      <a class="navbar-brand" href="<?=base_url()?>Products/add">Add product</a>
+      <a class="navbar-brand" href="<?=base_url()?>Shop_cart/deleted_products">Deleted products</a>
+      <a class="navbar-brand" href="<?=base_url()?>Login/log_out">Sign out</a>
 
   </nav>
   <?php } else {?>

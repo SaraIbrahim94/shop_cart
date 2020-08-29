@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 
     function index() {
         if(uid() != '')
-            redirect('index.php/Products');
+            redirect('Products');
         else
         {
             $data['title'] = 'Login';
@@ -37,7 +37,7 @@ class Login extends CI_Controller {
             if($is_logged)
             {
                 $this->session->set_flashdata('success', 'succefflluy logged in');
-                redirect('index.php/Products');
+                redirect('Products');
             }
             else
             {
@@ -58,9 +58,9 @@ class Login extends CI_Controller {
         ];
         $this->session->unset_userdata($new_data);
         $this->session->sess_destroy();
-        redirect('index.php/Login');
+        redirect('Login');
     } else {
-        redirect('index.php/Login');
+        redirect('Login');
     }
    }
 

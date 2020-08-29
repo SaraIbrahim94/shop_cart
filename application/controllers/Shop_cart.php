@@ -18,7 +18,7 @@ class Shop_cart extends CI_Controller {
             $this->load->view("shop_cart", $data);
         }
         else
-        redirect('index.php/Login');
+        redirect('Login');
     }
 
     function add()
@@ -38,7 +38,7 @@ class Shop_cart extends CI_Controller {
             echo 0;
         }
         else
-        redirect('index.php/Login');
+        redirect('Login');
     }
    
     function delete($cart_id = null)
@@ -49,7 +49,7 @@ class Shop_cart extends CI_Controller {
             $this->db->update('cart', ['deleted' => 1]);
             $this->session->set_flashdata("success", "data deleted successfully");
         }
-        redirect('index.php/Shop_cart');
+        redirect('Shop_cart');
     }
 
     function deleted_products()
@@ -61,14 +61,43 @@ class Shop_cart extends CI_Controller {
             $this->load->view('deleted_products', $data);
         }
         else
-        redirect('index.php/Login');
+        redirect('Login');
     }
 
     function purchase()
     {
         if($this->Shop_model->add_purchase())
         $this->session->set_flashdata("success", "Products successfully purchased.. Thank You!");
-        redirect('index.php/Shop_cart');
+        redirect('Shop_cart');
     }
+
+    function quantity()
+    {
+        $quantity = $this->input->post('quantity');
+        $cart_id = $this->input->post('cart_id');
+        $this->db->where('id', $cart_id);
+        $ret = $this->db->update('cart', ['quantity' => $quantity]);
+        $products = get_cart();
+        $total = 0;
+        if(!empty($products))
+        {
+            foreach($products as $one)
+            {
+                $total += $one->price * $one->quantity;
+            }
+        }
+        $data['total'] = $total;
+        if($ret)
+        {
+            $data['flag'] = 1;
+            echo json_encode($data);
+        }
+        else
+        {
+            $data['flag'] = 0;
+            echo json_encode($data);
+        }
+    }
+
 
 }

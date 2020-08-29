@@ -49,7 +49,7 @@
             <?= $this->security->get_csrf_token_name() ?>: '<?= $this->security->get_csrf_hash() ?>'
         };
         $.ajax({
-            url: "<?= base_url(); ?>index.php/Shop_cart/add",
+            url: "<?= base_url(); ?>Shop_cart/add",
             method: "POST",
             data: postData,
             success: function(data) {

@@ -20,7 +20,7 @@
                             <p class="text-h3"> </p>
                         </div>
                     </div>
-                    <form action="<?=base_url()?>index.php/Products/add" method="post" enctype="multipart/form-data">
+                    <form action="<?=base_url()?>Products/add" method="post" enctype="multipart/form-data">
                         <div class="row align-items-center mt-4">
                             <div class="col">
                             <label for="name">Product Name</label>

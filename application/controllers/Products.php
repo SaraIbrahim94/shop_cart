@@ -17,7 +17,7 @@ class Products extends CI_Controller {
             $this->load->view("products", $data);
         }
         else
-        redirect('index.php/Login');
+        redirect('Login');
 
     }
 
@@ -49,7 +49,7 @@ class Products extends CI_Controller {
                 }
                 $this->db->insert('products',$data);
                 $this->session->set_flashdata("success", "data submitted successfully");
-                redirect(base_url('index.php/Products'));
+                redirect(base_url('Products'));
             }
             else
             {
@@ -58,7 +58,7 @@ class Products extends CI_Controller {
             }
         }
         else
-        redirect('index.php/Login');
+        redirect('Login');
 
    }
 

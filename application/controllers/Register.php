@@ -14,7 +14,7 @@ class Register extends CI_Controller {
         if(uid() != '')
         {
             $this->session->set_flashdata('success', 'you already logged in');
-            redirect('index.php/Products');
+            redirect('Products');
         }
         else
         {
@@ -40,7 +40,7 @@ class Register extends CI_Controller {
             $data['password'] = do_hash($this->input->post('password'), 'md5');
             $this->db->insert('users', $data);
             $this->session->set_flashdata('success', 'succefflluy registered');
-            redirect('index.php/Login');
+            redirect('Login');
 
         }
    }

@@ -20,7 +20,7 @@
                             <p class="text-h3">Happiness is Shopping </p>
                         </div>
                     </div>
-                    <form id="form" action="<?=base_url()?>index.php/Register/validation" method="post">
+                    <form id="form" action="<?=base_url()?>Register/validation" method="post">
                         <div class="row align-items-center">
                             <div class="col mt-4">
                                 <input type="text" class="form-control" name="username" placeholder="Username" >
@@ -53,7 +53,7 @@
                                     </label>
                                 </div>
                                 <br>
-                            <h5>Already have account? <a href="<?=base_url()?>index.php/Login">Login</a></h5>
+                            <h5>Already have account? <a href="<?=base_url()?>Login">Login</a></h5>
                                 <button id="sbmit_btn" class="btn btn-primary mt-4"> Submit </button>
                             </div>
                         </div>
