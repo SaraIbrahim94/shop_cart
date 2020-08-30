@@ -9,20 +9,25 @@ class Register extends CI_Controller {
         parent::__construct();
         $this->load->model('Shop_model');
     }
-
+    //default page when go to register path
     function index() {
+        //if logged in then go to products page
         if(uid() != '')
         {
             $this->session->set_flashdata('success', 'you already logged in');
             redirect('Products');
         }
         else
-        {
+        {//if not logged in open registered page
             $data['title'] = 'Register';
             $this->load->view("register", $data);
         }
     }
-
+    //to validate the registration inputs
+    //check if email is unique
+    //the password matches the requirments
+    //if so, succeffull registeration
+    //if not so redirect to the registeration page to refill the data again
    function validation()
    {
         $this->load->library('form_validation');

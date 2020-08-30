@@ -9,7 +9,7 @@ class Shop_cart extends CI_Controller {
         parent::__construct();
         $this->load->model('Shop_model');
     }
-
+    //default page when go to Shop_cart path
     function index() {
         if(uid() != '')
         {
@@ -20,9 +20,10 @@ class Shop_cart extends CI_Controller {
         else
         redirect('Login');
     }
-
+    //adding product to the cart for specific user
     function add()
     {
+        //check first if logged in
         if(uid()!= '')
         {
             //check if there is row in purchase table first
@@ -37,10 +38,12 @@ class Shop_cart extends CI_Controller {
             else
             echo 0;
         }
-        else
+        else//if not redirect to log in page
         redirect('Login');
     }
-   
+   //to delete the product from shop cart when user want to
+   //it's soft deleted, when delete the flag deleted will be 1
+   //then redirect to shop_cart path again
     function delete($cart_id = null)
     {
         if($cart_id != null)
@@ -51,26 +54,31 @@ class Shop_cart extends CI_Controller {
         }
         redirect('Shop_cart');
     }
-
+    //this is the deleted products page when click on deleted products from menu navgiation
     function deleted_products()
     {
         if(uid()!='')
         {
             $data['title'] = 'Deleted Products';
+            //get all the deleted products for the logged in user
             $data['deleted_products'] = $this->Shop_model->get_deleted_products();
             $this->load->view('deleted_products', $data);
         }
         else
         redirect('Login');
     }
-
+    //when click on purchase button, the purchase row will be updated to be done
+    //if succeded will appear success msg, and redirect to shop cart page
     function purchase()
     {
         if($this->Shop_model->add_purchase())
         $this->session->set_flashdata("success", "Products successfully purchased.. Thank You!");
         redirect('Shop_cart');
     }
-
+    //increase and decrease quantity for specific product
+    //calculate the total to update it in the shop cart page
+    //if updated succeffully success msg appears and quantity changes
+    //else error msg appears 
     function quantity()
     {
         $quantity = $this->input->post('quantity');

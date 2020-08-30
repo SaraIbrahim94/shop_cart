@@ -9,6 +9,10 @@ class Shop_model extends CI_Model {
         parent::__construct();
     }
 
+    //check if the given email and password matches the values in database
+    //if so create new session
+    //return true
+    //else return false
     function validate_login($data)
     {
         $this->db->where("email", $data['email']);
@@ -27,22 +31,22 @@ class Shop_model extends CI_Model {
             return FALSE;
         }
     }
-
+    //general function to get all data for given table
     function get_all_data($table)
     {
         return $this->db->select('*')->from($table)->get()->result();
     }
-
+    //general function to get one record for given table and id
     function get_record($table, $id)
     {
         return $this->db->select('*')->from($table)->where('id', $id)->get()->row();
     }
-
+    //get all purchase data for specific user
     function get_purchase()
     {
         return $this->db->select('id')->from('purchase')->where('user_id', uid())->where('done!=', 1)->get()->row('id');
     }
-
+    //get all deleted products from shop cart for specific user
     function get_deleted_products()
     {
         $data = [];
@@ -67,7 +71,8 @@ class Shop_model extends CI_Model {
         $data['username'] = $this->db->select('username')->from('users')->where('id', uid())->get()->row('username');
         return $data;
     }
-
+    //last stop in shopping when click on purchase the products are added to purchase and make flag
+    //done to 1
     function add_purchase()
     {
         $this->db->where('user_id', uid());

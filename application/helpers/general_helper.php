@@ -6,7 +6,7 @@ function uid() {
     return $CI->session->userdata("user_id");
 }
 
-
+//general success msg label
 function flash_success() {
     $CI = &get_instance();
     $flash = "";
@@ -23,7 +23,7 @@ function flash_success() {
     }
     return $flash;
 }
-
+//general error msg label
 function flash_error() {
     $CI = &get_instance();
     $flash = "";
@@ -41,6 +41,9 @@ function flash_error() {
     return $flash;
 }
 
+//get all cart data for specified user
+//firstly get the purchase row id
+//then get products data by joining cart and products tables
 function get_cart()
 {
     $CI = &get_instance();

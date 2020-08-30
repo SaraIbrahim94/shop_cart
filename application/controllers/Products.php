@@ -9,7 +9,7 @@ class Products extends CI_Controller {
         parent::__construct();
         $this->load->model('Shop_model');
     }
-
+    //redirect to the products page
     function index() {
         if(uid() != ''){
             $data['title'] = 'Products';
@@ -20,20 +20,24 @@ class Products extends CI_Controller {
         redirect('Login');
 
     }
-
+    //add new product to products list
    function add()
    {
+       //check if user is logged in first
         if(uid() != ''){
+            //must enter product name and price
             $this->form_validation->set_rules("name", "name", "trim|required")
                     ->set_rules("price", "price", "trim|required");
             if ($this->form_validation->run()) {
+                //if fields is filled then add them to products table in database
+                //get all input data using POST 
                 $dt = $this->input->post();
                 $data = [];
                 foreach ($dt as $k => $v):
                     $data[$k] = $v;
                 endforeach;
                 unset($data['userfile']);
-
+                //check if there is an image uploaded
                 if ($_FILES['userfile']['name'] != '') {
                     $config['upload_path'] = './uploads/products';
                     $config['allowed_types'] = 'jpg|png|jpeg';
@@ -41,6 +45,7 @@ class Products extends CI_Controller {
                     if ($this->upload->do_upload()) {
                         $upload_data = $this->upload->data();
                         $data['img'] = $upload_data['file_name'];
+                        //to make all images with same sizes as needed
                         $this->resizeImage($upload_data['file_name'], 100, 100);
                     } else {
                         $this->session->set_flashdata("error", "image could not be uploaded");
@@ -57,14 +62,15 @@ class Products extends CI_Controller {
                 $this->load->view("add_product", $data);
             }
         }
-        else
+        else//if not so redirect to login page
         redirect('Login');
 
    }
-
+   //resize the given image with given width and height
    function resizeImage($filename, $width, $height) {
+       //orignial image path
     $source_path = FCPATH . '/uploads/products/' . $filename;
-   
+       //The resized image path
     $target_path = FCPATH . '/uploads/thumb/';
     $config_manip = array(
         'image_library' => 'gd2',

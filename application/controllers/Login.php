@@ -9,8 +9,9 @@ class Login extends CI_Controller {
         parent::__construct();
         $this->load->model('Shop_model');
     }
-
+    //deafult page when redirect to login path
     function index() {
+        //check if already logged in
         if(uid() != '')
             redirect('Products');
         else
@@ -19,7 +20,9 @@ class Login extends CI_Controller {
             $this->load->view("login", $data);
         }
     }
-
+    //varify the login inputs if email and password matches
+    //then redirect to products page
+    //else redirect to login page with the resulted error
    function do_login()
    {
         $this->load->library('form_validation');
@@ -47,7 +50,9 @@ class Login extends CI_Controller {
             
         }
    }
-
+   //when navgiate to logout page
+   //redirected to login page
+   //and empty session data
    function log_out()
    {
     if ((uid() != "")) {
